@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galax&pace👾 </title>
+   <link rel="stylesheet" href="./demo funcional.css">
+</head>
+<body>
+    <header>
+        <h1>Galax&pace</h1>
+    </header>
+
+    <section>
+        <article class="astronaut-section">
+            <div class="stars" id="stars"></div>
+            <div class="astronaut-container">
+                <div class="astronaut"><img src="gif nuevo.gif" alt=""></div>
+                <div class="thought-bubble" id="thoughtBubble">
+                    <div class="thought-text" id="thoughtText">
+                        Esperando tu pregunta...
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="chat-section">
+            
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div class="input-container">
+                    <input type="text" id="messageInput" placeholder="Escribe tu mensaje aquí..." maxlength="200">
+                    <button onclick="sendMessage()" id="sendBtn">🚀 Enviar</button>
+                </div>
+                
+            </div>
+        </article>
+    </section>
+
+    <script src="demo funcional.js"></script>
+</body>
+</html>
