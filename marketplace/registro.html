@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./registro.css">
+</head>
+<body>
+    <header >
+        <div class="cont-logo">
+            <img src="./imagenes/logo.png" alt="" class="logo">
+        </div>
+        <div class="titulo">
+            <b>
+                <h1 class="titulo1">GameZone</h1>
+            </b>
+            
+        </div>
+
+        <nav class="lista">
+            <ul>
+                <b><li class="compra">COMPRAR</li></b>
+                <b><li class="nosotros">NOSOTROS</li></b>
+                <b><li class="jugar">JUGAR</li></b>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="wrapper" id="formulario">
+        <div class="card-switch">
+            <label class="switch">
+               <input class="toggle" type="checkbox">
+               <span class="slider"></span>
+               <span class="card-side"></span>
+               <div class="flip-card__inner">
+                  <div class="flip-card__front">
+                     <div class="title">iniciar sesion</div>
+                     <form action="" class="flip-card__form">
+                        <input type="email" placeholder="correo" name="correo" class="flip-card__input">
+                        <input type="password" placeholder="contraseña" name="" class="flip-card__input">
+                        
+                            <a href="./market.html">
+                                <div>
+                                    <button class="flip-card__btn"  >vamos!</button>
+                                </div>
+                            </a>
+                     </form>
+                  </div>
+                  <div class="flip-card__back">
+                     <div class="title">registrate</div>
+                     <form action="" class="flip-card__form">
+                        <input type="name" placeholder="Nombre" class="flip-card__input">
+                        <input type="email" placeholder="Correo" name="correo" class="flip-card__input" id="correo">
+                        <input type="password" placeholder="Contraseña" name="contraseña" class="flip-card__input">
+                        <button class="flip-card__btn" type="submit">Confirmar!</button>
+                     </form>
+                  </div>
+               </div>
+            </label>
+        </div>   
+   </div>
+
+   <script>
+    let total = 0;
+    let cart = {};
+    let itemCount = 0;
+
+    function addToCart(product, price) {
+        total += price;
+        if (cart[product]) {
+            cart[product].quantity += 1;
+        } else {
+            cart[product] = { price: price, quantity: 1 };
+        }
+        itemCount++;
+        document.getElementById('totalAmount').innerText = '$' + total + ' COP';
+        document.getElementById('itemCount').innerText = itemCount;
+    }
+
+    function showCart() {
+        let cartContent = '';
+        for (let item in cart) {
+            cartContent += `
+                <div class="cart-item">
+                    ${cart[item].quantity}x ${item} - $${cart[item].price} COP 
+                    <button class="bto" onclick="removeFromCart('${item}')">×</button>
+                </div>`;
+        }
+        cartContent += '<br> <b>Total a pagar:</b> $' + total + ' COP';
+        document.getElementById('cartContent').innerHTML = cartContent;
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    function removeFromCart(product) {
+        if (cart[product]) {
+            total -= cart[product].price * cart[product].quantity;
+            itemCount -= cart[product].quantity;
+            delete cart[product];
+            document.getElementById('totalAmount').innerText = '$' + total + ' COP';
+            document.getElementById('itemCount').innerText = itemCount;
+            showCart(); // Actualiza el contenido del carrito
+        }
+    }
+
+    function acceptCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('total', total);
+        window.location.href = 'pago.html'; // Cambia a la URL de tu página de pago
+    }
+</script>
+    
+</body>
+</html>

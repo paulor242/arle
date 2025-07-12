@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore - Marketplace de Videojuegos</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="cont-logo">
+            <img src="imagenes/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="titulo">
+            <h1 class="titulo1">GameStore</h1>
+        </div>
+        <nav class="lista">
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="./market.html">Productos</a></li>
+                <li><a href="#about">Acerca de</a></li>
+            </ul>
+        </nav>
+        <div class="user-section" id="userSection">
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn-login" onclick="showLoginForm()">Iniciar Sesión</button>
+                <button class="btn-register" onclick="showRegisterForm()">Registrarse</button>
+            </div>
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span id="userName">Usuario</span>
+                <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+                <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Bienvenido a GameStore</h2>
+                <p>Tu marketplace favorito para los mejores videojuegos. Encuentra títulos increíbles, gestiona tu carrito de compras y disfruta de una experiencia de compra única.</p>
+                <div class="features">
+                    <div class="feature">
+                        <h3>🎮 Amplio Catálogo</h3>
+                        <p>Miles de juegos de todas las plataformas</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🛒 Carrito Inteligente</h3>
+                        <p>Guarda tus productos favoritos</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🔒 Compra Segura</h3>
+                        <p>Transacciones protegidas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products-section">
+            <h2>Productos Destacados</h2>
+            <div class="contenedor" id="productsContainer">
+                <!-- Los productos se cargarán dinámicamente -->
+                <div class="slider-flame">
+                    <ul >
+                        <li><img src="./imagenes/crash.jpeg" alt=""></li>
+                        <li><img src="./imagenes/jordi.jpeg" alt=""></li>
+                        <li><img src="./imagenes/super mario.jpeg" alt=""></li>
+                        <li><img src="imagenes/god of war.jpeg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" onclick="showRegisterForm()">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Registrarse</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Nombre de usuario" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" onclick="showLoginForm()">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+
+    
+    <script src="index.js"></script>
+</body>
+</html>

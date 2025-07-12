@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estadísticas de Atención Universitaria</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    button {
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    pre {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Estadísticas de Atención Universitaria</h1>
+<button onclick="mostrarEstadisticas()">Ver estadísticas</button>
+
+<pre id="resultado"></pre>
+
+<script>
+  // Clases del sistema
+  class Usuario {
+    constructor(id, segmento) {
+      this.id = id;
+      this.segmento = segmento;
+    }
+  }
+
+  class ModuloAtencion {
+    constructor(nombre) {
+      this.nombre = nombre;
+      this.atendidos = [];
+    }
+
+    atender(usuario, fecha) {
+      this.atendidos.push({ usuario, fecha });
+    }
+
+    getEstadisticasPorDia(fecha) {
+      const usuariosDelDia = this.atendidos.filter(a => a.fecha === fecha);
+      const estudiantes = usuariosDelDia.filter(a => a.usuario.segmento === 'Estudiante').length;
+      const docentes = usuariosDelDia.filter(a => a.usuario.segmento === 'Docente').length;
+
+      return {
+        modulo: this.nombre,
+        fecha,
+        total: usuariosDelDia.length,
+        estudiantes,
+        docentes
+      };
+    }
+
+    getTotalAtendidos() {
+      return this.atendidos.length;
+    }
+
+    contarPorSegmento(segmento, index = 0, total = 0) {
+      if (index >= this.atendidos.length) return total;
+      if (this.atendidos[index].usuario.segmento === segmento) total++;
+      return this.contarPorSegmento(segmento, index + 1, total);
+    }
+  }
+
+  class SistemaAtencion {
+    constructor() {
+      this.modulos = {
+        Terminal: new ModuloAtencion('Terminal'),
+        Oficina: new ModuloAtencion('Oficina')
+      };
+      this.transferencias = [];
+    }
+
+    atenderEn(moduloNombre, usuario, fecha) {
+      this.modulos[moduloNombre].atender(usuario, fecha);
+    }
+
+    transferir(usuario, deModulo, aModulo, fecha) {
+      this.transferencias.push({ usuario, de: deModulo, a: aModulo, fecha });
+      this.modulos[aModulo].atender(usuario, fecha);
+    }
+
+    getEstadisticasGlobales(fecha) {
+      const total = Object.values(this.modulos).reduce(
+        (sum, mod) => sum + mod.getTotalAtendidos(),
+        0
+      );
+
+      return {
+        fecha,
+        totalAtendidos: total,
+        transferencias: this.transferencias.filter(t => t.fecha === fecha).length,
+        modulos: Object.values(this.modulos).map(mod => mod.getEstadisticasPorDia(fecha))
+      };
+    }
+  }
+
+  // Función que crea el sistema, simula atención y muestra los resultados
+  function mostrarEstadisticas() {
+    const sistema = new SistemaAtencion();
+
+    const user1 = new Usuario(1, 'Estudiante');
+    const user2 = new Usuario(2, 'Docente');
+
+    sistema.atenderEn('Terminal', user1, '2025-05-25');
+    sistema.atenderEn('Oficina', user2, '2025-05-25');
+    sistema.transferir(user1, 'Terminal', 'Oficina', '2025-05-25');
+
+    const estadisticas = sistema.getEstadisticasGlobales('2025-05-25');
+
+    const docentesTerminal = sistema.modulos.Terminal.contarPorSegmento('Docente');
+
+    // Mostrar resultados en la pantalla
+    document.getElementById("resultado").textContent =
+      "📅 Estadísticas del día: " + estadisticas.fecha + "\n" +
+      "👥 Total atendidos: " + estadisticas.totalAtendidos + "\n" +
+      "🔄 Transferencias realizadas: " + estadisticas.transferencias + "\n\n" +
+      estadisticas.modulos.map(m => 
+        `📌 Módulo: ${m.modulo}
+    Total atendidos: ${m.total}
+    Estudiantes: ${m.estudiantes}
+    Docentes: ${m.docentes}`
+      ).join("\n\n") +
+      `\n\n🧮 (Recursivo) Docentes atendidos en Terminal: ${docentesTerminal}`;
+  }
+</script>
+
+</body>
+</html>

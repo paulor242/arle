@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle, #000000, #1a1a1a);
+    color: white;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+    box-shadow: 4px 4px 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to right,
+        rgba(5, 5, 5, 0.932), 
+        rgba(0, 0, 0, 0.726), 
+        rgba(3, 6, 177, 0.993),
+        rgba(85,3,89),
+        rgba(85,3,89)
+    );
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.cont-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+}
+
+.titulo1 {
+    background: linear-gradient(45deg, #78029c, #120499, #78029c, #120499);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease-in-out infinite;
+    font-size: 2rem;
+    margin: 0;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.lista ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.lista a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.lista a:hover {
+    color: #78029c;
+}
+
+
+main {
+    margin-top: 70px;
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, rgba(120, 2, 156, 0.1), rgba(18, 4, 153, 0.1));
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #78029c, #120499);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(120, 2, 156, 0.3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+}
+
+
+.feature h3 {
+    color: #78029c;
+    margin-bottom: 15px;
+}
+
+/* * Products Section */
+.products-section {
+    margin-top: 40px;
+}
+
+.products-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #78029c;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+.hero{}
+
+
+
+/* espacio para las taregtas */
+
+
+.card {
+    width: auto;
+    height: 250px;
+    border: none;
+    border-radius: 10px;
+    background: radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), linear-gradient(135deg, #ff0000 0%, #000036 100%), radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%);
+    background-blend-mode: normal, normal, screen, overlay, normal;
+    box-shadow: 0px 0px 10px 1px #000000;
+    background-repeat: no-repeat;
+    overflow: none;
+    background-size: cover;
+
+  }
+  
+/* espacio del boton  */
+
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background:#78029c;
+  color: #000000;
+  padding: 0.7em 1em;
+  margin-left: 120px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+  transform: translateX(5em);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+a{
+    text-decoration: none;
+}
+

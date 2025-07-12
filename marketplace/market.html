@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>productos </title>
+    <link rel="stylesheet" href="market.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <div class="cont-logo">
+            <img src="imagenes/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="titulo">
+            <h1 class="titulo1">GameStore</h1>
+        </div>
+        <nav class="lista">
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./market.html">Productos</a></li>
+                <li><a href="#about">Acerca de</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section" id="userSection">
+            <div class="relative">
+                <button id="cart-toggle" class="flex items-center space-x-1 bg-green-800 px-4 py-2 rounded-lg hover:bg-green-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-count"></span>
+            </button>
+
+            <!--  -->
+            <div id="cart-dropdown" class="hidden absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-xl z-50 border border-gray-200">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Your Cart</h3>
+                    <div id="cart-items" class="max-h-96 overflow-y-auto py-2">
+                        <p class="text-gray-500 text-center py-4">Your cart is empty</p>
+                    </div>
+                    <div id="cart-total" class="border-t pt-3 flex justify-between items-center">
+                        <span class="font-semibold">Total:</span>
+                        <span class="font-bold text-green-700">$0.00</span>
+                    </div>
+                    <button id="checkout-btn" class="w-full mt-2 bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 hidden">Proceed to Checkout</button>
+                </div>
+            </div>
+            <!--  -->
+
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span id="userName">Usuario</span>
+                <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+                <button class="btn-logout" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+  
+    <section id="home" class="hero">
+        <div class="hero-content">
+          <br>
+          <h2>Bienvenido a GameStore</h2>
+        </div>
+        <!-- segunda fila  -->
+        <div class="hero-content">
+            <br>
+            
+            <div class="features">
+                <div class="feature" >
+                    <h1>Call of duty</h1>
+                    <div class="card" style="background-image: url(./imagenes/call\ of\ duty.jpg)">
+                    </div>
+                    <button class="add-to-cart bg-green-100 text-green-700 px-3 py-1 rounded-lg text-sm hover:bg-green-200" data-id="4" data-name="Organic Cotton Tote" data-price="15.99" data-image="https://placehold.co/600x400">
+                            
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <a href="https://placehold.co/600x400"><span> add to car</span></a>
+                    </button>
+                </div>
+                <!-- aqui una  -->
+                <div class="feature" >
+                    <h1>fornite</h1>
+                    <div class="card" style="background-image: url(./imagenes/fornite.jpg);">
+                    </div>
+                    <button class="add-to-cart bg-green-100 text-green-700 px-3 py-1 rounded-lg text-sm hover:bg-green-200" data-id="4" data-name="Organic Cotton Tote" data-price="15.99" data-image="https://placehold.co/600x400">
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <a href="https://placehold.co/600x400"><span> add to car</span></a>
+                    </button>
+                </div>
+                <!-- aqui dos  -->
+                <div class="feature" >
+                    <h1>God of war</h1>
+                    <div class="card" style="background-image: url(./imagenes/god\ of\ war.jpeg);"></div>
+                    <button class="add-to-cart bg-green-100 text-green-700 px-3 py-1 rounded-lg text-sm hover:bg-green-200" data-id="4" data-name="Organic Cotton Tote" data-price="15.99" data-image="https://placehold.co/600x400">
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <a href="https://placehold.co/600x400"><span> add to car</span></a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- tercera fila  -->
+        <div class="hero-content">
+            <br>
+            
+            <div class="features">
+                <div class="feature" >
+                    <h1>Super mario</h1>
+                    <div class="card" style="background-image: url(./imagenes/super\ mario.jpeg);"></div>
+                        <button class="add-to-cart bg-green-100 text-green-700 px-3 py-1 rounded-lg text-sm hover:bg-green-200" data-id="4" data-name="Organic Cotton Tote" data-price="15.99" data-image="https://placehold.co/600x400">
+                            
+                            <div class="svg-wrapper-1">
+                                <div class="svg-wrapper">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    height="24"
+                                  >
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path
+                                      fill="currentColor"
+                                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                    ></path>
+                                  </svg>
+                                </div>
+                              </div>
+                              <a href="https://placehold.co/600x400"><span> add to car</span></a>
+                        </button>
+                    
+                   
+                    
+                    
+                </div>
+                <!-- aqui una  -->
+                <div class="feature" >
+                    <h1>jordi</h1>
+                    <div class="card" style="background-image: url(./imagenes/jordi.jpeg);">
+                    </div>
+                    <button class="add-to-cart bg-green-100 text-green-700 px-3 py-1 rounded-lg text-sm hover:bg-green-200" data-id="4" data-name="Organic Cotton Tote" data-price="15.99" data-image="https://placehold.co/600x400">
+                            
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <a href="https://placehold.co/600x400"><span> add to car</span></a>
+                    </button>
+                
+                </div>
+                <!-- aqui dos  -->
+                <div class="feature" >
+                    <h1>grand theft auto</h1>
+                    <div class="card" style="background-image: url(./imagenes/descarga.jpg);"></div>
+                    <button class="add-to-cart bg-green-100 text-green-700 px-3 py-1 rounded-lg text-sm hover:bg-green-200" data-id="4" data-name="Organic Cotton Tote" data-price="$4" data-image="https://placehold.co/600x400">
+                            
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                  fill="currentColor"
+                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                                ></path>
+                              </svg>
+                            </div>
+                          </div>
+                          <a href="https://placehold.co/600x400"><span> add to car</span></a>
+                    </button>
+                </div>
+            </div>
+        </div>
+      </section>
+    <script src="./market.js"></script>
+</body>
+</html>
